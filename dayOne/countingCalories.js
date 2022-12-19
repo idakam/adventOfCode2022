@@ -1,11 +1,11 @@
 let fs = require("fs");
 
-let elves = fs.readFileSync("input.txt").toString();
-elves = elves
-  .substring(0, elves.length - 1)
+let elves = fs
+  .readFileSync("input.txt")
+  .toString()
+  .trimEnd()
   .split("\n\n")
   .map((elf) => elf.split("\n"));
-console.log(elves);
 
 let newElves = elves.map((elf) =>
   elf.reduce((accum, curr) => parseInt(accum) + parseInt(curr), 0)

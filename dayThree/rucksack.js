@@ -55,8 +55,7 @@ let alpha = [
   "Z",
 ];
 
-let rucksacks = fs.readFileSync("input.txt").toString();
-rucksacks = rucksacks.substring(0, rucksacks.length - 1).split("\n");
+let rucksacks = fs.readFileSync("input.txt").toString().trimEnd().split("\n");
 
 let sectionedRucksacks = rucksacks.map((rucksack) => {
   let midpoint = rucksack.length / 2;

@@ -1,25 +1,25 @@
 const fs = require("fs");
 
-let pairs = fs.readFileSync("input.txt").toString();
-pairs = pairs
-  .substring(0, pairs.length - 1)
+let pairs = fs
+  .readFileSync("input.txt")
+  .toString()
+  .trimEnd()
   .split("\n")
-  .map((pair) => pair.split(","));
-pairs = pairs.map((pair) => pair.map((elf) => elf.split("-")));
+  .map((pair) => pair.split(","))
+  .map((pair) => pair.map((elf) => elf.split("-")))
+  .map((pair) => {
+    let first = [];
+    for (let i = parseInt(pair[0][0]); i <= parseInt(pair[0][1]); i++) {
+      first.push(i);
+    }
 
-pairs = pairs.map((pair) => {
-  let first = [];
-  for (let i = parseInt(pair[0][0]); i <= parseInt(pair[0][1]); i++) {
-    first.push(i);
-  }
+    let second = [];
+    for (let i = parseInt(pair[1][0]); i <= parseInt(pair[1][1]); i++) {
+      second.push(i);
+    }
 
-  let second = [];
-  for (let i = parseInt(pair[1][0]); i <= parseInt(pair[1][1]); i++) {
-    second.push(i);
-  }
-
-  return (pair = [[...first], [...second]]);
-});
+    return (pair = [[...first], [...second]]);
+  });
 
 let sum = 0;
 let partTwo = 0;
